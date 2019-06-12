@@ -1,0 +1,16 @@
+.komorka {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    border-color: black;
+    border-style: groove;
+    font-size: 50px;
+    display:table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+#1 {
+    background-image: url(../gfx/tlo.jpg);
+}
