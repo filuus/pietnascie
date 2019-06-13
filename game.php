@@ -1,8 +1,11 @@
 <?php
 session_start();
 require_once('obiekty/User.php');
-$user = new User;
-$user->login($_POST['login'], $_POST['password']);
+if(isset($_POST['login'])){
+        $user = new User;
+        $user->login($_POST['login'], $_POST['password']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +17,10 @@ $user->login($_POST['login'], $_POST['password']);
 <link rel="Stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
+        <ul>
+                <li><a href="profile.php">Profil</a></li>
+        </ul>
+        <?php echo $_SESSION['user']['login']; ?>
         <input id="losuj" type="button">
         <script src="script/main.js"></script>
 </body>

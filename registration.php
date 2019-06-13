@@ -7,7 +7,7 @@
     <title>Rejestracja</title>
 </head>
 <body>
-<form action="game.php" method="post">
+<form action="index.php" method="post">
         <label for="email">Adres email</label>
         <input type="text" id="eamil" name="email">
         <label for="login">Login</label>
@@ -20,7 +20,7 @@
         <input type="password" id="password" name="password">
         <label for="confirm_password">Powtórz hasło</label>
         <input type="password" id="confirm_password" name="confirm_password">
-        <input type="submit" value="Zaloguj">
+        <input type="submit" value="Zarejestruj się">
     </form>
     <a href="index.php">Zaloguj się</a>
 </body>

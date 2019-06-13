@@ -1,3 +1,11 @@
+<?php
+    require_once('obiekty/User.php');
+    if(isset($_POST['login'])){
+        $user = new User;
+        $user->createUser($_POST['login'], $_POST['password'], $_POST['email'], $_POST['name'], $_POST['surname']);
+        echo "zostałeś poprawnie zarejestrowany";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
