@@ -69,11 +69,10 @@ class User
     }
     public function updateUser($login, $email, $name, $surname)
     {
-        $user_id = $_SESSION['user']['user_id'];
         $query = "  UPDATE myusers SET
                     login = '$login', email = '$email', name = '$name', surname = '$surname'
                     WHERE
-                    user_id = $user_id";
+                    user_id = $this->user_id";
         mysqli_query($this->conect->getHook(), $query) or die(mysqli_error($this->conect->getHook()));
     }
 }

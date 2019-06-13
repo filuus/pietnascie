@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once('obiekty/User.php');
     if(isset($_POST['login'])) {
         $user = new User;
         $user->updateUser($_POST['login'], $_POST['email'], $_POST['name'], $_POST['surname']);
@@ -16,7 +17,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="profile.php">
+    <form action="profile.php" method="post">
         <label for="email">Adres email</label>
         <input type="text" id="eamil" name="email" value="<?php echo $_SESSION['user']['email'] ?>">
         <label for="login">Login</label>
