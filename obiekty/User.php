@@ -75,5 +75,9 @@ class User
                     user_id = $this->user_id";
         mysqli_query($this->conect->getHook(), $query) or die(mysqli_error($this->conect->getHook()));
     }
+    public function logout()
+    {
+        session_destroy();
+    }
 }
 ?>

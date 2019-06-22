@@ -1,7 +1,11 @@
 <?php
+    session_start();
     require_once('obiekty/User.php');
+    $user = new User;
+    if(isset($_SESSION['user']['login'])) {
+        $user->logout();
+    }
     if(isset($_POST['login'])){
-        $user = new User;
         $user->createUser($_POST['login'], $_POST['password'], $_POST['email'], $_POST['name'], $_POST['surname']);
         echo "zostałeś poprawnie zarejestrowany";
     }

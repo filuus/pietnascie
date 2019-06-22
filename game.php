@@ -19,6 +19,7 @@ if(isset($_POST['login'])){
 <body>
         <ul>
                 <li><a href="profile.php">Profil</a></li>
+                <li><a href="index.php">Wyloguj</a></li>
         </ul>
         <?php echo $_SESSION['user']['login']; ?>
         <input id="losuj" type="button">
