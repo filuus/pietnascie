@@ -7,6 +7,24 @@ let divs = [];
 
 let kontener = null;
 
+let liczbaRuchow = 0;
+
+let start = 0;
+let stop = 0;
+let time = 0;
+
+let czlowiek = 0;
+
+function postjson (){
+    $.ajax({
+        url         : "../pietnascie/game.php",
+        method      : "post",
+        data        : {
+            liczbaRuchow_json : liczbaRuchow,
+            time_json : time
+        }
+    })
+}
 
 
 function przeszukaj(){
@@ -38,6 +56,7 @@ function zamianaPol(i,j){
         if(tab[pi][pj].value == null){
             tab[pi][pj].value = tab[i][j].value;
             tab[i][j].value = null;
+            liczbaRuchow++;
             render();
         }
     }
@@ -47,11 +66,15 @@ function  render(){
     if(kontener != null){document.body.removeChild(kontener);}
      kontener = document.createElement("div");
     document.body.appendChild(kontener);
+    let k = 0;
     for (let i = 0; i < 4; i++){
         divs[i] = document.createElement("div");
         divs[i].classList.add("linijka")
         kontener.appendChild(divs[i]);
         for(let j = 0; j < 4; j++){
+            if(tab[i][j].value == 4*i+j+1){
+                k++;
+            }
             let x = tab[i][j].value;
             tab[i][j].html = document.createElement("div");
             tab[i][j].html.innerText = x;
@@ -62,9 +85,19 @@ function  render(){
 
         }
     }
+    if(czlowiek && k == 15){
+        let date = new Date();
+        stop = date.getTime();
+        time = (stop - start)/1000;
+        postjson();
+        
+    }
 }
 
 function generator(){
+    czlowiek = 0;
+    let date = new Date();
+    start = date.getTime();
     const min = 0;
     const max = 3;
     for(let i = 0; i < 10000; i++){
@@ -72,11 +105,14 @@ function generator(){
         let y = Math.floor(Math.random() * (max-min+1) + min);
         zamianaPol(x,y);
     }
+    czlowiek = 1;
+    liczbaRuchow = 0;
 }
 
 render();
 
 let button = document.querySelector('#losuj');
 button.addEventListener('click', generator);
+
 
 
